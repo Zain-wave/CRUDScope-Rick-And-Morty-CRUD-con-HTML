@@ -1,6 +1,13 @@
+@import "./about.css";
+@import "./character.css";
+@import "./list.css";
+@import "./media.css";
+@import "./statistics.css";
+
 @font-face {
   font-family: "Get Schwifty";
-  src: url("./fonts/get_schwifty.ttf") format("truetype");
+  src: url("/src/images/Rick-and-Morty-CRUD-Database-2-12-2025.png")
+    format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -44,7 +51,6 @@ body {
   position: relative;
   overflow: hidden;
 }
-
 .main-header::before {
   content: "";
   position: absolute;
