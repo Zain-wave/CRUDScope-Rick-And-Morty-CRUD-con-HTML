@@ -1,0 +1,286 @@
+@font-face {
+  font-family: "Get Schwifty";
+  src: url("./fonts/get_schwifty.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Colores principales Rick & Morty */
+  --rick-green: #97ce4c;
+  --morty-yellow: #f0e14a;
+  --portal-green: #44af69;
+  --rick-blue: #00b5cc;
+  --morty-orange: #e89ac7;
+  --space-purple: #44281d;
+  --dark-bg: #1a1a2e;
+  --light-bg: #f4f4f8;
+  --card-bg: #ffffff;
+  --text-dark: #333333;
+  --text-light: #ffffff;
+  --border-color: #e0e0e0;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, var(--dark-bg) 0%, #16213e 100%);
+  color: var(--text-light);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+.main-header {
+  background: linear-gradient(135deg, black 0%, #0f0c29 100%);
+
+  padding: 2rem 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.main-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+  background-size: cover;
+}
+
+.header-content {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.logo {
+  height: 200px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.highlight {
+  color: var(--morty-yellow);
+  background: var(--space-purple);
+  padding: 0.2rem 0.8rem;
+  border-radius: 20px;
+  display: inline-block;
+  margin-left: 0.5rem;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+abbr {
+  text-decoration: none;
+  border-bottom: 2px dotted var(--morty-yellow);
+  cursor: help;
+}
+
+/* Navigation Styles */
+.main-nav {
+  background: rgba(26, 26, 46, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 3px solid var(--rick-green);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+}
+
+.nav-list {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  flex-wrap: wrap;
+}
+
+.nav-item {
+  flex: 1;
+  min-width: 120px;
+  max-width: 200px;
+}
+
+.nav-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 0.5rem;
+  color: var(--text-light);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  margin: 0.5rem;
+}
+
+.nav-link:hover {
+  background: rgba(151, 206, 76, 0.2);
+  transform: translateY(-2px);
+  color: var(--rick-green);
+}
+
+.nav-link:active {
+  transform: translateY(0);
+}
+
+.nav-icon {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+  margin-bottom: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+.nav-link:hover .nav-icon {
+  transform: scale(1.2);
+  fill: var(--rick-green);
+}
+
+.nav-link span {
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+/* Main content area */
+.main-content {
+  max-width: 1400px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .logo-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .logo {
+    height: 50px;
+  }
+
+  .logo-container h1 {
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+
+  .nav-list {
+    justify-content: space-around;
+  }
+
+  .nav-item {
+    min-width: 90px;
+  }
+
+  .nav-link {
+    padding: 0.8rem 0.3rem;
+    margin: 0.3rem;
+  }
+
+  .nav-link span {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-container h1 {
+    font-size: 1.6rem;
+  }
+
+  .highlight {
+    margin-left: 0;
+    margin-top: 0.3rem;
+  }
+
+  .nav-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav-item {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .nav-link {
+    flex-direction: row;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem;
+  }
+
+  .nav-icon {
+    margin-bottom: 0;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.main-header,
+.main-nav {
+  animation: fadeIn 0.8s ease-out;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--dark-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--rick-green);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--portal-green);
+}
