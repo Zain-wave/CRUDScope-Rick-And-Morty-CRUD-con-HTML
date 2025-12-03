@@ -62,16 +62,6 @@
         </li>
 
         <li class="nav-item">
-          <a href="#estadisticas" class="nav-link">
-            <svg class="nav-icon" viewBox="0 0 24 24">
-              <path d="M3 3v18h18V3H3zm16 16H5V5h14v14z" />
-              <path d="M7 12l2 3 3-4 4.5 5.5L17 13l3-3" />
-            </svg>
-            <span>Estadísticas</span>
-          </a>
-        </li>
-
-        <li class="nav-item">
           <a href="#acerca" class="nav-link">
             <svg class="nav-icon" viewBox="0 0 24 24">
               <circle cx="12" cy="12" r="10" />
@@ -530,6 +520,174 @@
           </div>
         </div>
       </section>
+
+      <!-- Sección Multimedia -->
+      <section id="multimedia" class="section multimedia-section">
+        <div class="section-header">
+          <h2 class="section-title">
+            <svg class="section-icon" viewBox="0 0 24 24">
+              <path d="M4 6h16v12H4z" />
+              <circle cx="8.5" cy="12.5" r="2.5" />
+              <polygon points="14,10 19,7 19,17 14,14" />
+            </svg>
+            Multimedia Rick & Morty
+          </h2>
+          <p class="section-subtitle">
+            Videos, audios y galería del universo Rick & Morty
+          </p>
+        </div>
+
+        <div class="media-grid">
+          <!-- Video Principal -->
+          <div class="media-card video-card">
+            <div class="media-header">
+              <h3 class="media-title">
+                <svg class="media-icon" viewBox="0 0 24 24">
+                  <path
+                    d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"
+                  />
+                </svg>
+                Video: Opening de Rick & Morty
+              </h3>
+              <span class="media-duration">0:32 min</span>
+            </div>
+
+            <div class="video-container">
+              <video
+                controls
+                poster="./src/media/rick_and_morty_opening_image.avif"
+              >
+                <source
+                  src="./src/media/rick_and_morty_opening.mp4"
+                  type="video/mp4"
+                />
+                Tu navegador no soporta el elemento de video. Por favor,
+                actualízalo a una versión más reciente.
+              </video>
+            </div>
+
+            <div class="media-info">
+              <p class="media-description">
+                El opening original de Rick & Morty con la icónica canción de
+                <cite>Chaos Chaos</cite>. Este video es una demostración
+                utilizando contenido de prueba.
+              </p>
+            </div>
+          </div>
+
+          <!-- Audio Principal -->
+          <div class="media-card audio-card">
+            <div class="media-header">
+              <h3 class="media-title">
+                <svg class="media-icon" viewBox="0 0 24 24">
+                  <path
+                    d="M12 3v9.28c-.47-.17-.97-.28-1.5-.28C8.01 12 6 14.01 6 16.5S8.01 21 10.5 21c2.31 0 4.2-1.75 4.45-4H15V6h4V3h-7z"
+                  />
+                </svg>
+                Audios
+              </h3>
+              <span class="media-duration">0:09 min</span>
+            </div>
+
+            <div class="audio-container">
+              <audio controls>
+                <source
+                  src="./src/media/Voicy_Morty Smith_ Chicken noise.mp3"
+                  type="audio/mpeg"
+                />
+                Tu navegador no soporta el elemento de audio.
+              </audio>
+            </div>
+
+            <div class="audio-container">
+              <audio controls>
+                <source
+                  src="./src/media/Voicy_Morty Smith_ Morty.mp3"
+                  type="audio/mpeg"
+                />
+                Tu navegador no soporta el elemento de audio.
+              </audio>
+            </div>
+
+            <div class="audio-container">
+              <audio controls>
+                <source
+                  src="./src/media/Voicy_Rick Sanchez I’m having.mp3"
+                  type="audio/mpeg"
+                />
+                Tu navegador no soporta el elemento de audio.
+              </audio>
+            </div>
+            <div class="audio-container">
+              <audio controls>
+                <source
+                  src="./src/media/Voicy_Rick Sanchez Knight_.mp3"
+                  type="audio/mpeg"
+                />
+                Tu navegador no soporta el elemento de audio.
+              </audio>
+            </div>
+
+            <div class="audio-info">
+              <p class="audio-description">
+                Demos de audio con efectos de sonido inspirados en Rick & Morty.
+              </p>
+            </div>
+          </div>
+
+          <!-- Galería de Imágenes -->
+          <div class="media-card gallery-card">
+            <div class="media-header">
+              <h3 class="media-title">
+                <svg class="media-icon" viewBox="0 0 24 24">
+                  <path
+                    d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"
+                  />
+                </svg>
+                Galería de Wallpapers Rick & Morty
+              </h3>
+              <span class="media-counter" id="imageCounter">1/6</span>
+            </div>
+
+            <div class="gallery-container">
+              <div class="gallery-viewport">
+                <div class="gallery-slides" id="gallerySlides">
+                  <!-- Las imágenes se cargarán dinámicamente -->
+                </div>
+              </div>
+
+              <button
+                class="gallery-nav prev"
+                id="prevImage"
+                title="Imagen anterior"
+              >
+                <svg viewBox="0 0 24 24">
+                  <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+                </svg>
+              </button>
+              <button
+                class="gallery-nav next"
+                id="nextImage"
+                title="Siguiente imagen"
+              >
+                <svg viewBox="0 0 24 24">
+                  <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+                </svg>
+              </button>
+            </div>
+
+            <div class="gallery-thumbnails" id="galleryThumbnails">
+              <!-- Los thumbnails se cargarán dinámicamente -->
+            </div>
+
+            <div class="gallery-info">
+              <p class="gallery-description">
+                Galería de personajes icónicos de Rick & Morty.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
     <!-- Logica de las notificaciones -->
     <script src="src/js/notifications.js"></script>
@@ -539,6 +697,9 @@
 
     <!-- Logica de la pestaña list -->
     <script type="module" src="./src/js/list.js"></script>
+
+    <!-- Logica de la pestaña media -->
+    <script type="module" src="./src/js/media.js"></script>
 
     <!-- Script principal -->
     <script src="script.js"></script>

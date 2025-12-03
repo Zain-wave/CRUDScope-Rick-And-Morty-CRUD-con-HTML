@@ -1,0 +1,365 @@
+/* Multimedia Section Styles */
+.multimedia-section {
+  animation: fadeIn 0.8s ease-out;
+}
+
+/* Media Grid */
+.media-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.media-card {
+  background: rgba(26, 26, 46, 0.7);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(151, 206, 76, 0.2);
+  transition: all 0.3s ease;
+}
+
+.media-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  border-color: var(--rick-green);
+}
+
+.media-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 1.5rem 1rem;
+  border-bottom: 1px solid rgba(151, 206, 76, 0.1);
+}
+
+.media-title {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: var(--rick-green);
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.media-icon {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+
+.media-duration,
+.media-counter {
+  background: rgba(151, 206, 76, 0.1);
+  color: var(--rick-green);
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* Video Card */
+.video-card {
+  grid-column: span 2;
+}
+
+@media (max-width: 1024px) {
+  .video-card {
+    grid-column: span 1;
+  }
+}
+
+.video-container {
+  position: relative;
+  padding: 0;
+  overflow: hidden;
+}
+
+.video-container video {
+  width: 100%;
+  height: 500px;
+  display: block;
+  background: #000;
+  border-radius: 0;
+}
+
+/* Remove video controls overlay since we're using native controls */
+.video-controls-overlay {
+  display: none;
+}
+
+.media-info {
+  padding: 1.5rem;
+}
+
+.media-description {
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+/* Audio Card */
+.audio-container {
+  padding: 2rem;
+  background: linear-gradient(
+    135deg,
+    rgba(151, 206, 76, 0.05),
+    rgba(0, 181, 204, 0.05)
+  );
+  position: relative;
+}
+
+@keyframes visualizer {
+  from {
+    height: 20%;
+  }
+  to {
+    height: 100%;
+  }
+}
+
+.audio-container audio {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.audio-info {
+  padding: 1.5rem;
+}
+
+.audio-description {
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+/* Gallery Card */
+.gallery-container {
+  position: relative;
+  padding: 1rem;
+  background: #000;
+  min-height: 500px;
+  overflow: hidden;
+}
+
+/* Hacer la galería más ancha */
+.gallery-card {
+  grid-column: span 3;
+}
+.gallery-viewport {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.gallery-slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  height: 100%;
+}
+
+.gallery-slide {
+  min-width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.gallery-slide img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+}
+
+.gallery-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(151, 206, 76, 0.8);
+  border: none;
+  color: var(--space-purple);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.gallery-nav:hover {
+  background: var(--rick-green);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.gallery-nav.prev {
+  left: 1.5rem;
+}
+
+.gallery-nav.next {
+  right: 1.5rem;
+}
+
+.gallery-nav svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+
+.gallery-thumbnails {
+  display: flex;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: rgba(26, 26, 46, 0.5);
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.gallery-thumbnail {
+  flex-shrink: 0;
+  width: 80px;
+  height: 60px;
+  border-radius: 4px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+  opacity: 0.7;
+}
+
+.gallery-thumbnail:hover,
+.gallery-thumbnail.active {
+  opacity: 1;
+  border-color: var(--rick-green);
+}
+
+.gallery-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gallery-info {
+  padding: 1.5rem;
+}
+
+.gallery-description {
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+/* Responsive adjustments for multimedia */
+@media (max-width: 768px) {
+  .media-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .video-card {
+    grid-column: span 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .media-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .media-duration,
+  .media-counter {
+    align-self: flex-start;
+  }
+
+  .gallery-nav {
+    width: 36px;
+    height: 36px;
+  }
+
+  .gallery-nav.prev {
+    left: 0.5rem;
+  }
+
+  .gallery-nav.next {
+    right: 0.5rem;
+  }
+
+  .gallery-thumbnail {
+    width: 60px;
+    height: 45px;
+  }
+}
+
+/* Fullscreen mode (for gallery) */
+.fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.fullscreen .gallery-slides {
+  max-width: 90vw;
+  max-height: 90vh;
+}
+
+.fullscreen .gallery-slide img {
+  max-width: 90vw;
+  max-height: 90vh;
+}
+
+.fullscreen-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(151, 206, 76, 0.9);
+  border: none;
+  color: var(--space-purple);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  z-index: 10000;
+}
+
+/* Loading animation for media */
+.media-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(151, 206, 76, 0.3);
+  border-top-color: var(--rick-green);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
