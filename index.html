@@ -10,6 +10,7 @@
       href="https://cdn-icons-png.flaticon.com/512/1146/1146857.png"
     />
   </head>
+
   <body>
     <header class="main-header">
       <div class="header-content">
@@ -26,7 +27,7 @@
         </p>
       </div>
     </header>
-
+    <!-- Nav bar -->
     <nav class="main-nav">
       <ul class="nav-list">
         <li class="nav-item">
@@ -37,6 +38,7 @@
             <span>Crear Personaje</span>
           </a>
         </li>
+
         <li class="nav-item">
           <a href="#listado" class="nav-link">
             <svg class="nav-icon" viewBox="0 0 24 24">
@@ -47,6 +49,7 @@
             <span>Listado</span>
           </a>
         </li>
+
         <li class="nav-item">
           <a href="#multimedia" class="nav-link">
             <svg class="nav-icon" viewBox="0 0 24 24">
@@ -57,6 +60,7 @@
             <span>Multimedia</span>
           </a>
         </li>
+
         <li class="nav-item">
           <a href="#estadisticas" class="nav-link">
             <svg class="nav-icon" viewBox="0 0 24 24">
@@ -66,6 +70,7 @@
             <span>Estadísticas</span>
           </a>
         </li>
+
         <li class="nav-item">
           <a href="#acerca" class="nav-link">
             <svg class="nav-icon" viewBox="0 0 24 24">
@@ -80,10 +85,240 @@
     </nav>
 
     <main class="main-content">
-      <!-- Aquí irán las secciones -->
+      <!-- Sección Crear Personaje -->
+      <section id="crear" class="section create-section">
+        <div class="section-header">
+          <h2 class="section-title">
+            <svg class="section-icon" viewBox="0 0 24 24">
+              <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+            </svg>
+            Crear Nuevo Personaje
+          </h2>
+          <p class="section-subtitle">
+            Agrega un nuevo personaje al universo de Rick & Morty
+          </p>
+        </div>
+
+        <div class="form-container">
+          <form id="characterForm" class="character-form">
+            <input type="hidden" id="characterId" value="" />
+
+            <div class="form-grid">
+              <!-- Columna Izquierda -->
+              <div class="form-column" style="justify-content: space-evenly">
+                <div class="form-group">
+                  <label for="name" class="form-label">
+                    Nombre del Personaje *
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    class="form-input"
+                    placeholder="Ej: Rick Sanchez"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="status" class="form-label">Estado *</label>
+                  <select
+                    id="status"
+                    name="status"
+                    class="form-select"
+                    required
+                  >
+                    <option value="">Seleccionar estado</option>
+                    <option value="Alive">Vivo</option>
+                    <option value="Dead">Muerto</option>
+                    <option value="unknown">Desconocido</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="species" class="form-label">Especie *</label>
+                  <input
+                    type="text"
+                    id="species"
+                    name="species"
+                    class="form-input"
+                    placeholder="Ej: Humano, Alienígena, etc."
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="type" class="form-label">Tipo (opcional)</label>
+                  <input
+                    type="text"
+                    id="type"
+                    name="type"
+                    class="form-input"
+                    placeholder="Ej: Parasite, Robot, etc."
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="gender" class="form-label">Género *</label>
+                  <select
+                    id="gender"
+                    name="gender"
+                    class="form-select"
+                    required
+                  >
+                    <option value="">Seleccionar género</option>
+                    <option value="Male">Masculino</option>
+                    <option value="Female">Femenino</option>
+                    <option value="Genderless">Sin género</option>
+                    <option value="unknown">Desconocido</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="episodes" class="form-label">
+                    Episodios en los que aparece
+                  </label>
+                  <input
+                    type="text"
+                    id="episodes"
+                    name="episodes"
+                    class="form-input"
+                    placeholder="Ej: 1, 5, 12, 24"
+                  />
+                </div>
+              </div>
+
+              <!-- Columna Derecha -->
+              <div
+                class="form-column"
+                style="justify-content: space-evenly; margin-top: 7px"
+              >
+                <div class="form-group">
+                  <label for="origin" class="form-label">Origen *</label>
+                  <input
+                    type="text"
+                    id="origin"
+                    name="origin"
+                    class="form-input"
+                    placeholder="Ej: Tierra (C-137)"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="location" class="form-label">
+                    Última ubicación *
+                  </label>
+                  <input
+                    type="text"
+                    id="location"
+                    name="location"
+                    class="form-input"
+                    placeholder="Ej: Citadel of Ricks"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="image" class="form-label"
+                    >Selecciona una imagen *</label
+                  >
+                  <div id="imageGrid" class="image-grid"></div>
+                  <p class="form-hint">
+                    Haz clic en una imagen para seleccionarla (se mantendrá
+                    resaltada)
+                  </p>
+                </div>
+
+                <div class="form-group">
+                  <label for="created" class="form-label">
+                    Fecha de creación
+                  </label>
+                  <input
+                    type="date"
+                    id="created"
+                    name="created"
+                    class="form-input"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group full-width">
+              <label for="description" class="form-label"
+                >Descripción del Personaje</label
+              >
+              <textarea
+                id="description"
+                name="description"
+                class="form-textarea"
+                rows="4"
+                placeholder="Describe las características, personalidad y curiosidades del personaje..."
+              ></textarea>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" id="submitBtn" class="btn btn-primary">
+                <svg class="btn-icon" viewBox="0 0 24 24">
+                  <path
+                    d="M17 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z"
+                  />
+                </svg>
+                Crear Personaje
+              </button>
+
+              <button
+                type="button"
+                id="cancelBtn"
+                class="btn btn-secondary"
+                style="display: none"
+              >
+                <svg class="btn-icon" viewBox="0 0 24 24">
+                  <path
+                    d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+                  />
+                </svg>
+                Cancelar Edición
+              </button>
+
+              <button type="reset" class="btn btn-outline">
+                <svg class="btn-icon" viewBox="0 0 24 24">
+                  <path
+                    d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"
+                  />
+                </svg>
+                Limpiar Formulario
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <div class="form-tips">
+          <h3 class="tips-title">
+            <svg class="tips-icon" viewBox="0 0 24 24">
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
+              />
+            </svg>
+            Consejos para crear personajes
+          </h3>
+          <ul class="tips-list">
+            <li>Los campos marcados con * son obligatorios</li>
+
+            <li>Los números de episodio deben estar entre 1 y 51</li>
+            <li>
+              La fecha de creación se establecerá automáticamente si la dejas
+              vacía
+            </li>
+          </ul>
+        </div>
+      </section>
     </main>
 
+    <!-- Script principal -->
     <script src="script.js"></script>
-    <script type="module" src="/src/main.js"></script>
+
+    <!-- Logica de la pestaña characters -->
+    <script type="module" src="./src/js/characters.js"></script>
   </body>
 </html>
