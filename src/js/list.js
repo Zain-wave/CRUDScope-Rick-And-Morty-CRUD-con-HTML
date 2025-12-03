@@ -1,4 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // ==========================
+  // Traigo elementos del DOM
+  // ==========================
   const charactersTableBody = document.getElementById("charactersTableBody");
   const noResults = document.getElementById("noResults");
   const tableView = document.getElementById("tableView");
@@ -11,26 +14,31 @@ document.addEventListener("DOMContentLoaded", () => {
   const currentCountEl = document.getElementById("currentCount");
   const totalCountEl = document.getElementById("totalCount");
 
+  // ==========================
+  // 1. Cargo los personajes desde localStorage
+  // ==========================
   function loadCharacters() {
     const charactersData = localStorage.getItem("characters");
     let characters = [];
 
-    if (charactersData) {
-      try {
-        characters = JSON.parse(charactersData);
-      } catch (error) {
-        console.error("Error al parsear los datos de localStorage:", error);
-        showNoResults();
-        return;
-      }
+    // Por si los datos están dañados
+    try {
+      if (charactersData) characters = JSON.parse(charactersData);
+    } catch (error) {
+      console.error("Error al parsear los datos de localStorage:", error);
+      showNoResults();
+      return;
     }
 
+    // Actualizo estadísticas generales
     updateStats(characters);
 
+    // Actualizo contadores superiores
     const totalChars = characters.length;
     totalCountEl.textContent = totalChars;
     currentCountEl.textContent = totalChars;
 
+    // Mostrar u ocultar la tabla dependiendo si hay personajes
     if (characters.length === 0) {
       showNoResults();
     } else {
@@ -39,16 +47,25 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  // ==========================
+  // 2. Mostrar mensaje de "sin resultados"
+  // ==========================
   function showNoResults() {
     noResults.style.display = "flex";
     tableView.style.display = "none";
   }
 
+  // ==========================
+  // 3. Ocultar mensaje y mostrar tabla
+  // ==========================
   function hideNoResults() {
     noResults.style.display = "none";
     tableView.style.display = "block";
   }
 
+  // ==========================
+  // 4. Estadísticas del dashboard
+  // ==========================
   function updateStats(characters) {
     const total = characters.length;
     const alive = characters.filter((char) => char.status === "Alive").length;
@@ -63,19 +80,25 @@ document.addEventListener("DOMContentLoaded", () => {
     unknownCountEl.textContent = unknown;
   }
 
+  // ==========================
+  // 5. Mostrar filas de la tabla
+  // ==========================
   function renderTable(characters) {
     charactersTableBody.innerHTML = "";
 
     characters.forEach((char, index) => {
       const row = document.createElement("tr");
 
+      // Fecha formateada
       const createdDate = char.created
         ? new Date(char.created).toLocaleDateString()
         : "No especificada";
 
+      // Status y gender
       const statusClass = `status-${char.status?.toLowerCase() || "unknown"}`;
       const genderClass = `gender-${char.gender?.toLowerCase() || "unknown"}`;
 
+      // Plantilla de fila
       row.innerHTML = `
         <td>${index + 1}</td>
         <td>
@@ -151,6 +174,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // ==========================
+  // 6. Acciones (editar, eliminar, ver detalles)
+  // ==========================
   window.editCharacter = function (index) {
     alert(`Editar personaje en índice ${index}`);
   };
@@ -160,9 +186,16 @@ document.addEventListener("DOMContentLoaded", () => {
       const charactersData = localStorage.getItem("characters");
       if (charactersData) {
         const characters = JSON.parse(charactersData);
+
+        // Eliminamos el personaje
         characters.splice(index, 1);
+
+        // Guardo los cambios
         localStorage.setItem("characters", JSON.stringify(characters));
+
+        // Recargo la tabla
         loadCharacters();
+
         showNotifi("Personaje eliminado correctamente", "success");
       }
     }
@@ -170,10 +203,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   window.viewCharacterDetails = function (index) {
     const charactersData = localStorage.getItem("characters");
+
     if (charactersData) {
       const characters = JSON.parse(charactersData);
       const character = characters[index];
 
+      // Toda la informacion
       let details = `Nombre: ${character.name || "Sin nombre"}\n`;
       details += `Estado: ${character.status || "Desconocido"}\n`;
       details += `Especie: ${character.species || "No especificada"}\n`;
@@ -189,6 +224,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
+  // ==========================
+  // 7. Botones del panel superior
+  // ==========================
   document.getElementById("tableViewBtn")?.addEventListener("click", () => {
     document.getElementById("tableView").style.display = "block";
     document.getElementById("tableViewBtn").classList.add("active");
@@ -198,5 +236,8 @@ document.addEventListener("DOMContentLoaded", () => {
     loadCharacters();
   });
 
+  // ==========================
+  // 8. Cargo los datos iniciales
+  // ==========================
   loadCharacters();
 });
