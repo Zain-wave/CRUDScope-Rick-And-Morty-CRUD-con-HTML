@@ -234,7 +234,43 @@ document.addEventListener("DOMContentLoaded", function () {
 
   initializeCarousel();
 });
-
+/**
+ * Actualiza el carrusel cuando cambia el tamaño de la ventana.
+ * Se usa un pequeño retraso para evitar múltiples llamadas durante el redimensionamiento.
+ */
 window.addEventListener("resize", () => {
   setTimeout(updateCarousel, 100);
+});
+
+/**
+ * Maneja la inicialización de la aplicación y el envío del formulario.
+ * - Configura el carrusel y el formulario al cargar el DOM.
+ * - Procesa el envío del formulario para crear un nuevo personaje.
+ */
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("characterForm");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const character = Object.fromEntries(formData.entries());
+
+    const selectedImageInput = document.getElementById("selectedImage");
+    if (selectedImageInput && selectedImageInput.value) {
+      character.image = selectedImageInput.value;
+    }
+
+    let characters = JSON.parse(localStorage.getItem("characters")) || [];
+
+    character.id = Date.now();
+
+    characters.push(character);
+
+    localStorage.setItem("characters", JSON.stringify(characters));
+
+    showNotifi("¡Personaje creado exitosamente!", "success");
+
+    form.reset();
+  });
 });

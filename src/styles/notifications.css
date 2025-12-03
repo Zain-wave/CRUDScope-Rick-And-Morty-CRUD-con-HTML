@@ -1,0 +1,43 @@
+/* Contenedor */
+#notifi-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+/* Caja base */
+.notifi {
+  background: #333;
+  color: white;
+  padding: 16px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  min-width: 250px;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: all 0.3s ease;
+}
+
+/* Animación al mostrarse */
+.notifi.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Colores según tipo */
+.notifi-success {
+  background: #44af69;
+}
+
+.notifi-error {
+  background: #f44336;
+}
+
+.notifi-warning {
+  background: #ff9800;
+}
+
+.notifi-info {
+  background: #2196f3;
+}
