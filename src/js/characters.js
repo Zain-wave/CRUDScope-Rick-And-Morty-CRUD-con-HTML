@@ -272,5 +272,12 @@ document.addEventListener("DOMContentLoaded", function () {
     showNotifi("¡Personaje creado exitosamente!", "success");
 
     form.reset();
+
+    // Desmarcar imagen seleccionada
+    document.querySelectorAll(".carousel-item").forEach((item) => {
+      item.classList.remove("selected");
+    });
+
+    window.dispatchEvent(new CustomEvent('charactersUpdated'));
   });
 });
