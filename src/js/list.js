@@ -193,8 +193,8 @@ document.addEventListener("DOMContentLoaded", () => {
         // Guardo los cambios
         localStorage.setItem("characters", JSON.stringify(characters));
 
-        // Recargo la tabla
-        loadCharacters();
+        // Disparar evento para recargar la tabla
+        window.dispatchEvent(new CustomEvent("charactersUpdated"));
 
         showNotifi("Personaje eliminado correctamente", "success");
       }
@@ -236,8 +236,10 @@ document.addEventListener("DOMContentLoaded", () => {
     loadCharacters();
   });
 
+  window.addEventListener("charactersUpdated", loadCharacters);
+
   // ==========================
-  // 8. Cargo los datos iniciales
+  // 8. Cargar los datos iniciales
   // ==========================
   loadCharacters();
 });
