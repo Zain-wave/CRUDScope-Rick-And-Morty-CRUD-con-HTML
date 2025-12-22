@@ -2,8 +2,8 @@
 @import "./character.css";
 @import "./list.css";
 @import "./media.css";
-@import "./statistics.css";
 @import "./notifications.css";
+@import "./footer.css";
 
 @font-face {
   font-family: "Get Schwifty";
